@@ -5,7 +5,7 @@ public class Main {
         Scanner my_scanner = new Scanner(System.in);
         Game judge = new Game();
         String choice_player1, choice_player2;
-        int result = 0;
+        int result;
 
         System.out.println("-----Rock Paper Scissors GAME------");
         System.out.println("Enter Player 1 choice (rock, paper or scissors):");
@@ -40,7 +40,5 @@ public class Main {
             default:
                 throw new IllegalArgumentException("Not Acceptable Result Number!");
         }
-
-        return;
     }
 }
