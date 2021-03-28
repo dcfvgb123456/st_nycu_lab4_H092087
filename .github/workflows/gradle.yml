@@ -53,6 +53,9 @@ jobs:
       - name: Test with Gradle & Junit 5
         run: ./gradlew test
 
+      - name: Check artifact upload dir
+        run: ls -al ~/artifact/upload
+
       - uses: actions/upload-artifact@v2
         with:
           name: testReport
