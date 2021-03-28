@@ -56,7 +56,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: testReport
-          path: ./build/test-results
+          path: path/to/artifact
 
 
 #  Assemble:
