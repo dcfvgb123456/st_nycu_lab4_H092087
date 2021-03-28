@@ -56,7 +56,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: testReport
-          path: ~/artifact/upload/test/TEST-GameTest.xml
+          path: ~/artifact/upload/
 
 
 #  Assemble:
