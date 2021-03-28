@@ -37,14 +37,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: mkdir -p ~/artifact/upload
-
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: 11
 
-      - name: Generate Wrapper
+      - name: Generate Gradle Wrapper
         run: gradle wrapper
 
       - name: Grant execute permission for gradlew
@@ -53,13 +51,13 @@ jobs:
       - name: Test with Gradle & Junit 5
         run: ./gradlew test
 
-      - name: Check artifact upload dir
-        run: ls -al ~/artifact/upload
+      - name: Check current dir
+        run: ls -al ./build/reports/tests/
 
       - uses: actions/upload-artifact@v2
         with:
           name: testReport
-          path: ~/artifact/upload/
+          path: ./build/reports/tests/test
 
 
 #  Assemble:
