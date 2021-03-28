@@ -28,9 +28,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew compileJava
 
   Test:
+    needs: Compile
     runs-on: ubuntu-latest
 
     steps:
@@ -48,10 +49,11 @@ jobs:
         run: chmod +x gradlew
 
       - name: Test with Gradle & Junit 5
-        run: ./gradlew clean test
+        run: ./gradlew test
 
 
   Assemble:
+    needs: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -69,4 +71,4 @@ jobs:
         run: chmod +x gradlew
 
       - name: Package with the Gradle Wrapper
-        run: ./gradlew buildJar clean assemble
+        run: ./gradlew assemble
