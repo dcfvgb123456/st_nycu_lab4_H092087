@@ -6,7 +6,7 @@ group 'org.example'
 version '1.0-SNAPSHOT'
 
 reporting.baseDir = "test-report"
-testResultsDirName = "artifact/test-result"
+testResultsDirName = "path/to/artifact/test-results"
 
 repositories {
     mavenCentral()
