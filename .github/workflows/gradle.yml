@@ -51,6 +51,11 @@ jobs:
       - name: Test with Gradle & Junit 5
         run: ./gradlew test
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifact-test-report
+          path: artifact/test-result/test-report
+
 
   Assemble:
     needs: Test
