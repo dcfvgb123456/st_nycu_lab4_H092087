@@ -11,18 +11,22 @@ class GameTest {
 
     private static Stream<Arguments> GameCasesProvider() {
         return Stream.of(
-                Arguments.of(Game.STR_ROCK, Game.STR_ROCK, Game.RESULT_DRAW),
-                Arguments.of(Game.STR_ROCK, Game.STR_PAPER, Game.RESULT_P2_WIN),
+                // all player 1 win cases
+                Arguments.of(Game.STR_SCISSORS, Game.STR_PAPER, Game.RESULT_P1_WIN),
+                Arguments.of(Game.STR_PAPER, Game.STR_ROCK, Game.RESULT_P1_WIN),
                 Arguments.of(Game.STR_ROCK, Game.STR_SCISSORS, Game.RESULT_P1_WIN),
 
-                Arguments.of(Game.STR_PAPER, Game.STR_ROCK, Game.RESULT_P1_WIN),
-                Arguments.of(Game.STR_PAPER, Game.STR_PAPER, Game.RESULT_DRAW),
+                // all player 2 win cases
                 Arguments.of(Game.STR_PAPER, Game.STR_SCISSORS, Game.RESULT_P2_WIN),
-
+                Arguments.of(Game.STR_ROCK, Game.STR_PAPER, Game.RESULT_P2_WIN),
                 Arguments.of(Game.STR_SCISSORS, Game.STR_ROCK, Game.RESULT_P2_WIN),
-                Arguments.of(Game.STR_SCISSORS, Game.STR_PAPER, Game.RESULT_P1_WIN),
+
+                // all draw cases
+                Arguments.of(Game.STR_ROCK, Game.STR_ROCK, Game.RESULT_DRAW),
+                Arguments.of(Game.STR_PAPER, Game.STR_PAPER, Game.RESULT_DRAW),
                 Arguments.of(Game.STR_SCISSORS, Game.STR_SCISSORS, Game.RESULT_DRAW),
 
+                // invalid case
                 Arguments.of("HELLO", "WORLD", -1)
         );
     }
