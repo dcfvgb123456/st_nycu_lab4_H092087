@@ -29,6 +29,4 @@ build*
 
 # Gradle files
 .gradle/
-gradle/
-gradlew*
 
