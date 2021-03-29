@@ -118,6 +118,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ${{needs.Assemble.outputs.output_filename}}
+          files: ./download/artifacts/${{needs.Assemble.outputs.output_filename}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
