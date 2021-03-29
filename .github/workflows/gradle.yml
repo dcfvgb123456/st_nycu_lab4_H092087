@@ -87,7 +87,8 @@ jobs:
         run: ./gradlew assemble
 
       - name: Set environment jar_filename
-        run: echo "jar_filename=$(ls -R ./build/libs/)" >> $GITHUB_ENV
+        run: |
+          echo "jar_filename=$(ls ./build/libs/)" >> $GITHUB_ENV
 
       - id: jar_filename
         run: echo "::set-output name=temp::${{ env.jar_filename }}"
