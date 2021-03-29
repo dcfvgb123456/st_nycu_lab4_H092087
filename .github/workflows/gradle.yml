@@ -121,10 +121,10 @@ jobs:
 
     steps:
       - name: Checkout
-        if: startsWith(github.ref, 'refs/tags/')
         uses: actions/checkout@v2
 
       - uses: actions/download-artifact@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           name: assembleJar
           path: ./download/artifacts
@@ -134,6 +134,7 @@ jobs:
 
       - name: Release
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: ./download/artifacts/${{needs.Assemble.outputs.output_filename}}
         env:
