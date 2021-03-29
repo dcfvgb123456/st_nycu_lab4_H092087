@@ -98,10 +98,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        run: echo ${{ needs.Assemble.outputs.output_jar }}
+
 
       - name: Check Whether Tag Push Event or Not
         if: startsWith(github.ref, 'refs/tags/')
+        run: echo ${{ needs.Assemble.outputs.output_jar }}
 
       - uses: actions/download-artifact@v2
         with:
