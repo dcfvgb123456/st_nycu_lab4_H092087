@@ -35,7 +35,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Generate Wrapper
-        if: teps.gradle-cache.outputs.cache-hit != 'true'
+        if: steps.gradle-cache.outputs.cache-hit != 'true'
         run: gradle wrapper
 
       - name: Grant execute permission for gradlew
