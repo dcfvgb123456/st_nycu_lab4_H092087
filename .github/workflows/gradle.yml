@@ -30,7 +30,7 @@ jobs:
         run:  ./gradlew compileJava
 
   Test:
-#    needs: Compile
+    needs: Compile
     runs-on: ubuntu-latest
 
     steps:
