@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      output_filename: ${{ steps.jar_filename.outputs }}
+      output_filename: ${{ steps.jar_filename.outputs.jar_filename }}
 
     steps:
       - name: Checkout
@@ -87,7 +87,7 @@ jobs:
         run: ./gradlew assemble
 
       - id: jar_filename
-        run: echo "$(ls -R ./build/libs/)"
+        run: echo "::set-output name=jar_filename::$(ls -R ./build/libs/)"
 
       - uses: actions/upload-artifact@v2
         with:
