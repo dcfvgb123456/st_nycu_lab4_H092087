@@ -35,13 +35,13 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Build with Gradle
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.gradle-cache.outputs.cache-hit != 'true'
         run: |
           chmod +x gradlew
           ./gradlew compileJava
 
       - name: Build with Gradle Cache
-        if: steps.cache.outputs.cache-hit == 'true'
+        if: steps.gradle-cache.outputs.cache-hit == 'true'
         run: |
           chmod +x gradlew.bat
           ./gradlew.bat compileJava
