@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      output_filename: ${{ steps.jar_filename.outputs.jar_filename }}
+      output_filename: ${{ steps.jar_filename.outputs.temp }}
 
     steps:
       - name: Checkout
@@ -86,8 +86,11 @@ jobs:
       - name: Assemble with the Gradle Wrapper
         run: ./gradlew assemble
 
-      - id: jar_filename
-        run: echo "::set-output name=jar_filename::$(ls -R ./build/libs/)"
+      - id: Set environment jar_filename
+        run: echo "jar_filename=$(ls -R ./build/libs/)" >> $GITHUB_ENV
+
+      - id: Output jar_filename
+        run: echo "::set-output name=temp::${{ env.jar_filename }}"
 
       - uses: actions/upload-artifact@v2
         with:
