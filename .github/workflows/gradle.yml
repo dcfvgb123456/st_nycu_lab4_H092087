@@ -92,6 +92,9 @@ jobs:
     needs: Assemble
     runs-on: ubuntu-latest
 
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -101,9 +104,12 @@ jobs:
           name: assembleJar
           path: ./download/artifacts
 
-      - name: Display structure of downloaded files
-        run: ls -R
-        working-directory: ./download/artifacts
+      - name: Store file name of downloaded files
+        env:
+          JAR_FILENAME: ./download/artifacts ls -R
+
+      - name: Display file names
+        run: echo "$JAR_FILENAME is filename!"
 
       - name: Release
         uses: softprops/action-gh-release@v1
