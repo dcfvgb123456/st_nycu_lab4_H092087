@@ -10,57 +10,57 @@ on:
     branches: [ main ]
 
 jobs:
-  Compile:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
-
-      - name: Generate Wrapper
-        run: gradle wrapper
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Build with Gradle
-        run: ./gradlew compileJava
-
-  Test:
-    needs: Compile
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up JDK 11
-        uses: actions/setup-java@v1
-        with:
-          java-version: 11
-
-      - name: Generate Gradle Wrapper
-        run: gradle wrapper
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Test with Gradle & Junit 5
-        run: ./gradlew test
-
-      - name: Check current dir
-        run: ls -al ./build/reports/tests/
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: testReport
-          path: ./build/reports/tests/test
+#  Compile:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 11
+#
+#      - name: Generate Wrapper
+#        run: gradle wrapper
+#
+#      - name: Grant execute permission for gradlew
+#        run: chmod +x gradlew
+#
+#      - name: Build with Gradle
+#        run: ./gradlew compileJava
+#
+#  Test:
+#    needs: Compile
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 11
+#
+#      - name: Generate Gradle Wrapper
+#        run: gradle wrapper
+#
+#      - name: Grant execute permission for gradlew
+#        run: chmod +x gradlew
+#
+#      - name: Test with Gradle & Junit 5
+#        run: ./gradlew test
+#
+#      - name: Check current dir
+#        run: ls -al ./build/reports/tests/
+#
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: testReport
+#          path: ./build/reports/tests/test
 
   Assemble:
-    needs: Test
+#    needs: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -92,6 +92,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: GITHUB_REF
+        run: echo "$GITHUB_REF"
 
       - uses: actions/download-artifact@v2
         with:
