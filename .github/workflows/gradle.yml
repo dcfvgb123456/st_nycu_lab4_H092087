@@ -87,7 +87,7 @@ jobs:
         run: ./gradlew assemble
 
       - id: jar_filename
-        run: echo "$(./build/libs/ ls -R)"
+        run: echo "$(ls -R ./build/libs/)"
 
       - uses: actions/upload-artifact@v2
         with:
