@@ -107,7 +107,7 @@ jobs:
           name: assembleJar
           path: ./build/libs/
 
-  Realease:
+  Release:
     needs: Assemble
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/tags/') }}
