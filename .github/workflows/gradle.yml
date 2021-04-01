@@ -23,36 +23,36 @@ jobs:
         with:
           java-version: 11
 
-      - name: Cache Gradle packages
-        uses: actions/cache@v2
-        id: cache_gradle
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          # if the content of gradle-wrapper.properties been changed, the cache will be invalid
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+#      - name: Cache Gradle packages
+#        uses: actions/cache@v2
+#        id: cache_gradle
+#        with:
+#          path: |
+#            ~/.gradle/caches
+#            ~/.gradle/wrapper
+#          # if the content of gradle-wrapper.properties been changed, the cache will be invalid
+#          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+#          restore-keys: |
+#            ${{ runner.os }}-gradle-
 
-      - name: Grant execute permission for gradlew
-        if: steps.cache_gradle.outputs.cache-hit != 'true'
-        run: chmod +x gradlew
-
-      - name: Compile with Gradle Wrapper
-        if: steps.cache_gradle.outputs.cache-hit != 'true'
-        run:  ./gradlew compileJava
+#      - name: Grant execute permission for gradlew
+#        if: steps.cache_gradle.outputs.cache-hit != 'true'
+#        run: chmod +x gradlew
+#
+#      - name: Compile with Gradle Wrapper
+#        if: steps.cache_gradle.outputs.cache-hit != 'true'
+#        run:  ./gradlew compileJava
 
       - name: Compile with Gradle (With Cache)
-        if: steps.cache_gradle.outputs.cache-hit == 'true'
+#        if: steps.cache_gradle.outputs.cache-hit == 'true'
         run: gradle compileJava
 
-      - name: Cleanup Gradle Cache
-        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
-        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
-        run: |
-          rm -f ~/.gradle/caches/modules-2/modules-2.lock
-          rm -f ~/.gradle/caches/modules-2/gc.properties
+#      - name: Cleanup Gradle Cache
+#        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+#        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+#        run: |
+#          rm -f ~/.gradle/caches/modules-2/modules-2.lock
+#          rm -f ~/.gradle/caches/modules-2/gc.properties
 
 #  Test:
 #    needs: Compile
