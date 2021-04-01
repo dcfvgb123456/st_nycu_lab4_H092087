@@ -44,7 +44,7 @@ jobs:
         run:  ./gradlew compileJava
 
       - name: Compile with Gradle (With Cache)
-        if: steps.cache_gradle.outputs.cache-hit != 'true'
+        if: steps.cache_gradle.outputs.cache-hit == 'true'
         run: gradle compileJava
 
       - name: Cleanup Gradle Cache
